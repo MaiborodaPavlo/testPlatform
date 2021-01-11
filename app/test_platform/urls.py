@@ -19,12 +19,9 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.urls import path
 
-from upload.views import image_upload
-
 urlpatterns = [
-    url(r'^accounts/', include('accounts.urls')),
-    path('upload/', image_upload, name="upload"),
     path('admin/', admin.site.urls),
+    url('accounts/', include('accounts.urls'), name='accounts'),
 ]
 
 if bool(settings.DEBUG):
