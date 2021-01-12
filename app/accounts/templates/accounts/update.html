@@ -19,12 +19,8 @@
 								<img src="{% static 'img/no-avatar.png' %}" alt="avatar">
 							{% endif %}
 							</div>
+							<h5 class="user-name">{{ user.username }}</h5>
 							<h6 class="user-email">{{ user.email }}</h6>
-							{% if request.user.id == user.id %}
-								<div class="my-3">
-									<a class="btn btn-sm btn-success" role="button" href="{% url 'accounts:update' user.id %}">Edit</a>
-								</div>
-							{% endif %}
 						</div>
 					</div>
 				</div>
@@ -33,34 +29,17 @@
 		<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 			<div class="card h-100">
 				<div class="card-body">
-					<div class="row gutters">
+					<div class="row">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<h6 class="mb-3 text-primary">Personal Details</h6>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-							<div class="form-group">
-								First Name: {{ user.first_name }}
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-							<div class="form-group">
-								Last Name: {{ user.last_name }}
-							</div>
-						</div>
-						{% if user.dob %}
-							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+							<form method="POST" enctype="multipart/form-data">
+								{% csrf_token %}
 								<div class="form-group">
-									Date of Birthday: {{ user.dob|date:"SHORT_DATE_FORMAT" }}
+									{{ form.as_p }}
 								</div>
-							</div>
-						{% endif %}
-						{% if user.info %}
-							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-								<div class="form-group">
-									Info: {{ user.info }}
-								</div>
-							</div>
-						{% endif %}
+								<button type="submit" class="btn btn-primary">Update</button>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>

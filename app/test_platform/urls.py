@@ -21,7 +21,8 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('accounts/', include('accounts.urls'), name='accounts'),
+    path('social/', include('social_django.urls', 'social')),
+    path('accounts/', include(('accounts.urls', 'accounts'))),
 ]
 
 if bool(settings.DEBUG):

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="text-center my-2">
+                <h5>Login Form</h5>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-6 mx-auto text-center">
+            <a class="btn btn-primary" role="button" href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+            <a class="btn btn-info" role="button" href="{% url 'social:begin' 'linkedin-oauth2' %}">Login with LinkedIn</a>
+            <a class="btn btn-warning" role="button" href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
+        </div>
+    </div>
+{% endblock %}

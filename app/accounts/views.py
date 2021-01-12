@@ -1,7 +1,43 @@
+from django.contrib import messages
+from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.generic import UpdateView
+
+from .forms import UserLoginForm, UserRegisterForm, UserUpdateForm
+from .utils import login_excluded
+
+User = get_user_model()
+
+
+@login_excluded('accounts:dashboard')
+def login_view(request):
+    form = UserLoginForm(request.POST or None)
+    if form.is_valid():
+        user = authenticate(request, email=form.cleaned_data['email'], password=form.cleaned_data['password'])
+        login(request, user)
+        return redirect('accounts:dashboard')
+    return render(request, 'accounts/login.html', {'form': form})
+
+
+@login_excluded('accounts:dashboard')
+def signup_view(request):
+    form = UserRegisterForm(request.POST or None)
+    if form.is_valid():
+        new_user = form.save(commit=False)
+        new_user.set_password(form.cleaned_data['password'])
+        new_user.save()
+        messages.success(request, 'User created successfully.')
+        return redirect('accounts:login')
+    return render(request, 'accounts/signup.html', {'form': form})
 
 
 @login_required
 def dashboard(request):
     return render(request, 'accounts/dashboard.html', {})
+
+
+class UserUpdate(UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'accounts/update.html'
