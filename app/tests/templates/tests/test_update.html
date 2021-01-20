@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Update Test
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-10">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.management_form }}
+                {{ form.non_form_errors }}
+
+                <div class="row my-3">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link" id="v-pills-empty-tab" data-toggle="pill" href="#{{ form.empty_form.prefix }}" role="tab" aria-controls="v-empty" aria-selected="false">Add new</a>
+                            {% for question_form in form %}
+                                <a
+                                    class="nav-link{% if forloop.first %} active{% endif %}"
+                                    id="v-pills-{{ question_form.prefix }}-tab"
+                                    data-toggle="pill"
+                                    href="#{{ question_form.prefix }}"
+                                    role="tab"
+                                    aria-controls="v-pills-{{ question_form.prefix }}"
+                                    aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                                >
+                                    Question #{{ forloop.counter }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+                        </div>
+                    </div>
+                </div>
+<!--                <ul class="nav nav-tabs my-3" role="tablist">-->
+<!--                    <li class="nav-item empty-form" role="presentation">-->
+<!--                        <a-->
+<!--                            class="nav-link"-->
+<!--                            href="#{{ form.empty_form.prefix }}"-->
+<!--                            aria-selected="false"-->
+<!--                            data-toggle="tab"-->
+<!--                            role="tab"-->
+<!--                        >-->
+<!--                            New tab-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    {% for question_form in form %}-->
+<!--                        <li class="nav-item" role="presentation">-->
+<!--                            <a-->
+<!--                                class="nav-link{% if forloop.first %} active{% endif %}"-->
+<!--                                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"-->
+<!--                                href="#{{ question_form.prefix }}"-->
+<!--                                data-toggle="tab"-->
+<!--                                role="tab"-->
+<!--                            >-->
+<!--                                Tab #{{ forloop.counter }}-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    {% endfor %}-->
+<!--                </ul>-->
+
+<!--                <div class="tab-content form-inline">-->
+<!--                    <div class="tab-pane empty-form" id="{{ form.empty_form.prefix }}">-->
+<!--                        <div>-->
+<!--                            {{ form.empty_form.nested.management_form }}-->
+<!--                            <div class="empty-form">-->
+<!--                                {{ form.empty_form.nested.empty_form.as_p }}-->
+<!--                            </div>-->
+<!--                            {% for answer_form in form.empty_form.nested %}-->
+<!--                                <div>-->
+<!--                                    {{ answer_form.as_p }}-->
+<!--                                </div>-->
+<!--                            {% endfor %}-->
+<!--                            <button type="button" class="btn btn-primary" data-action="add-inner-form">-->
+<!--                                Add inner form-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            {{ form.empty_form.as_p }}-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    {% for question_form in form %}-->
+<!--                        <div class="tab-pane{% if forloop.first %} active{% endif %}"-->
+<!--                             id="{{ question_form.prefix }}">-->
+<!--                            <div>-->
+<!--                                {{ question_form.nested.management_form }}-->
+<!--                                {{ question_form.nested.non_form_errors }}-->
+<!--                                <div class="empty-form">-->
+<!--                                    {{ question_form.nested.empty_form.as_p }}-->
+<!--                                </div>-->
+<!--                                {% for answer_form in question_form.nested %}-->
+<!--                                    <div>-->
+<!--                                        {{ answer_form.as_p }}-->
+<!--                                    </div>-->
+<!--                                {% endfor %}-->
+<!--                                <button type="button" class="btn btn-primary" data-action="add-inner-form">-->
+<!--                                    Add answer-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                {{ question_form.as_p }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    {% endfor %}-->
+<!--                    <div class="actions">-->
+<!--                        <button type="button" class="btn btn-primary" data-action="add-outer-form">-->
+<!--                            Add question-->
+<!--                        </button>-->
+<!--                        <input type="submit" value="Save" />-->
+<!--                    </div>-->
+<!--                </div>-->
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<script type="text/javascript">
+    var outerFormset = $("form > div.tab-content > div.tab-pane").not('.actions')
+        .djangoFormset({
+        on: {
+            formInitialized: function(event, form) {
+                /* Init inner formset */
+                var innerFormsetElem = form.elem.children('div').first();
+                var innerFormset = innerFormsetElem.children('div').djangoFormset();
+                innerFormsetElem.on('click', '[data-action=add-inner-form]', function(event) {
+                    innerFormset.addForm();
+                });
+            },
+            formAdded: function(event, form) {
+                /* Optionally set tab header text on new forms */
+                form.tab.elem.find('a').text("Tab #" + (form.index + 1));
+            }
+        }
+    });
+    /* Add new outer form on add button click */
+    $('form').on('click', '[data-action=add-outer-form]', function(event) {
+        outerFormset.addForm();
+    });
+    // /* Optionally update tab label based on input value */
+    // $('form').on('change', 'input:not([name*="__prefix__"]):first', function() {
+    //     var tabLabel = "First input value is " + $(this).val();
+    //     form = $(this).closest('.tab-pane').data('djangoFormset.Form');
+    //     form.tab.elem.find('a').text(tabLabel);
+    // });
+</script>
+{% endblock %}

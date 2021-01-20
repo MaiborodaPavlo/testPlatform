@@ -66,9 +66,9 @@ class UserUpdateForm(forms.ModelForm):
     )
     dob = forms.DateField(
         label='Date of Birthday',
-        help_text='Format Y-m-d',
         required=False,
-        widget=forms.DateInput(attrs={'class': 'form-control'})
+        widget=forms.DateInput(attrs={'class': 'form-control'}),
+        input_formats=['%d/%m/%Y']
     )
     info = forms.CharField(
         label='Personal info',

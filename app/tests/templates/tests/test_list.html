@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Test List
+{% endblock %}
+
+{% block content %}
+    <div class="row mt-5">
+        <div class="col-10 mx-auto">
+            <h6>Filters:</h6>
+            <form method="get">
+                <div class="form-group">
+                    {{ filter.form.as_p }}
+                    <button class="btn btn-sm btn-primary" type="submit">Filter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if filter.qs %}
+        <hr>
+        <div class="row">
+            <div class="card-deck">
+            {% for test in filter.qs %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ test.name }}</h5>
+                            <p class="card-text">{{ test.description|truncatechars:30 }}</p>
+                            <a href="{{ test.get_absolute_url }}" class="btn btn-primary">More</a>
+                            <p class="card-text"><small class="text-muted">Author: {{ test.owner }}</small></p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Created: {{ test.created|date:"Y/m/d" }}
+                        </div>
+                    </div>
+            {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p>There are no tests to display.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% load comments %}
+{% load extra_tags %}
+
+{% block title %}
+    Test detail
+{% endblock %}
+
+{% block content %}
+<div class="row my-4">
+    <div class="col-10 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                {% with is_passed=test.results.count %}
+                <h5 class="card-title">
+                    {{ test.name }}
+                    <span class="badge badge-dark" data-toggle="tooltip" data-placement="bottom" title="Passed count">{{ test.n_passed }}</span>
+                    {% if is_passed %}
+                        <span class="badge badge-success">Passed</span>
+                    {% endif %}
+                </h5>
+
+                <p class="card-text">{{ test.description }}</p>
+                {% if is_passed %}
+                {% with ra_count=test|right_answers_count:user.id %}
+                    {% proportion test.questions.count ra_count as percent%}
+                    Right answers:
+                    <div class="progress my-2">
+                        <div
+                            class="progress-bar bg-info"
+                            role="progressbar"
+                            data-percentage="100"
+                            style="width: {{ percent }}%"
+                            aria-valuenow="{{ percent }}"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                        >{{ ra_count }} | {{ percent }}%</div>
+                    </div>
+                {% endwith %}
+                {% endif %}
+                {% if test.owner == user %}
+                    <a class="btn btn-primary" href="{% url 'tests:update' pk=test.pk %}">Edit</a>
+                {% endif %}
+                <a href="{% url 'tests:process' pk=test.pk %}" class="btn btn-primary">Take the test</a>
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-10 mx-auto">
+        <div id="comments-wrapper">
+            {% get_comment_count for test as comment_count %}
+            <h4>Comments ({{ comment_count }}):</h4>
+            {% render_comment_list for object %}
+            <hr>
+            <h5>Add new comment:</h5>
+            {% render_comment_form for object %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_script %}
+<script>
+    $( document ).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip({
+            'container': 'body'
+        });
+    });
+</script>
+{% endblock%}

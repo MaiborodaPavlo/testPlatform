@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Test Process
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-10 mx-auto text-center">
+        <h1>{{ test.name }}</h1>
+        <h2>{{ test.description }}</h2>
+    </div>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    {{ answer_formset.management_form }}
+    {% for question, form in combined %}
+        <div class="card my-2">
+            <div class="card-header">
+                {{ forloop.counter }}) {{ question.text }}
+            </div>
+            <div class="card-body answers">
+                {{ form.as_p }}
+            </div>
+        </div>
+    {% endfor %}
+    <button class="btn btn-primary" type="submit">Pass</button>
+</form>
+{% endblock %}

@@ -32,7 +32,7 @@
     font-size: 0.8rem;
     text-align: center;
 }
-.card {
+.dashboard-card {
     background: #343B3F;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -40,12 +40,46 @@
     border: 0;
     margin-bottom: 1rem;
 }
-/*.form-control {*/
-/*    border: 1px solid gray;*/
-/*    -webkit-border-radius: 2px;*/
-/*    -moz-border-radius: 2px;*/
-/*    border-radius: 2px;*/
-/*    font-size: .825rem;*/
-/*    background: #343B3F;*/
-/*    color: white;*/
-/*}*/
+
+.empty-form {
+    display: none;
+}
+
+.answer-block {
+    margin-left: 10px;
+    background: #79aec8;
+}
+
+.comment-item .thumbnail {
+    padding:0px;
+}
+.comment-item .card {
+	position:relative;
+}
+.comment-item .card>.card-header:after,
+.comment-item .card>.card-header:before{
+	position:absolute;
+	top:11px;left:-16px;
+	right:100%;
+	width:0;
+	height:0;
+	display:block;
+	content:" ";
+	border-color:transparent;
+	border-style:solid solid outset;
+	pointer-events:none;
+}
+.comment-item .card>.card-header:after{
+	border-width:7px;
+	border-right-color:#f7f7f7;
+	margin-top:1px;
+	margin-left:2px;
+}
+.comment-item .card>.card-header:before{
+	border-right-color:#ddd;
+	border-width:8px;
+}
+
+.answers > ul{
+    list-style: none;
+}

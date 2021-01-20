@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Create Test
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-10 mx-auto my-3">
+        <h4>Create Test</h4>
+        <form class="test-form" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            {{ questions.management_form }}
+            {{ questions.non_form_errors }}
+
+            <div class="empty-form formset" id="{{ questions.empty_form.prefix }}">
+                <hr>
+                <h4>Question</h4>
+                {{ questions.empty_form.as_p }}
+
+                {{ questions.empty_form.nested.management_form }}
+                {{ questions.empty_form.nested.non_form_errors }}
+                <div class="empty-form answer-block">
+                    <h5>Answer</h5>
+                    {{ questions.empty_form.nested.empty_form.as_p }}
+                </div>
+                {% for answer_form in questions.empty_form.nested %}
+                    <div class="answer-block">
+                        <h5>Answer</h5>
+                        {{ answer_form.as_p }}
+                    </div>
+                {% endfor %}
+                <button type="button" class="btn btn-primary" data-action="add-answer">
+                    Add Answer
+                </button>
+            </div>
+            {% for question_form in questions %}
+                <div class="formset" id="{{ question_form.prefix }}">
+                    <hr>
+                    <h4>Question</h4>
+                    {{ question_form.as_p }}
+
+                    {{ question_form.nested.management_form }}
+                    {{ question_form.nested.non_form_errors }}
+                    <div class="empty-form answer-block">
+                        <h5>Answer</h5>
+                        {{ question_form.nested.empty_form.as_p }}
+                    </div>
+                    {% for answer_form in question_form.nested %}
+                        <div class="answer-block" id="{{ answer_form.prefix }}">
+                            <h5>Answer</h5>
+                            {{ answer_form.as_p }}
+                        </div>
+                    {% endfor %}
+                    <button type="button" class="btn btn-primary" data-action="add-answer">Add Answer</button>
+                </div>
+            {% endfor %}
+            <hr>
+            <button type="button" class="btn btn-primary" data-action="add-question">Add Question</button>
+            <a class="btn btn-secondary" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_script %}
+<script type="text/javascript">
+    const questionFormset = $('form').children('div').djangoFormset({
+        on: {
+            formInitialized: function(event, form) {
+                const answerFormset = form.elem.children('div').djangoFormset({
+                    deleteButtonText: 'Delete Answer',
+                    addButtonSelector: '[data-action=add-answer]',
+                });
+                form.elem.on('click', '[data-action=add-answer]', function(event) {
+                    answerFormset.addForm();
+                });
+            },
+        },
+        deleteButtonText: 'Delete Question',
+        addButtonSelector: '[data-action=add-question]',
+    });
+    /* Add new outer form on add button click */
+    $('form').on('click', '[data-action=add-question]', function(event) {
+        questionFormset.addForm();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% load i18n %}
+
+<div id="c{{ comment.id }}" class="container comment-item my-2">
+{% block comment_item %}
+    <div class="row">
+        <div class="col-2">
+            {% if comment.user.avatar %}
+                <div class="thumbnail">
+                    <img class="img-fluid user-photo" src="{{ comment.user.avatar.url }}">
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-10">
+            <div class="card">
+                <div class="card-header">
+                    {% if comment.name %}<b>{{ comment.name }}</b>{% else %}{% trans "Anonymous" %}{% endif %}
+                    <span class="text-muted">{% blocktrans with submit_date=comment.submit_date %}on {{ submit_date }}{% endblocktrans %}</span>
+                </div>
+                <div class="card-body">
+                    {{ comment.comment|linebreaks }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</div>
