@@ -3,7 +3,7 @@ from django.db import models
 from django.urls import reverse_lazy
 
 
-class CustomUser(AbstractUser):
+class User(AbstractUser):
     username = models.CharField(max_length=150, blank=True, null=True)
     email = models.EmailField(unique=True, max_length=255)
     dob = models.DateField(blank=True, null=True)
@@ -17,4 +17,4 @@ class CustomUser(AbstractUser):
         return self.email
 
     def get_absolute_url(self):
-        return reverse_lazy('accounts:dashboard')
+        return reverse_lazy('accounts:profile')

@@ -5,7 +5,8 @@ from .models import (
     Test,
     Question,
     Answer,
-    Result)
+    Result,
+)
 
 
 class AnswerInline(nested_admin.NestedStackedInline):

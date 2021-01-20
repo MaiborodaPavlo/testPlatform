@@ -1,5 +1,15 @@
 from django.contrib import admin
 
-from .models import CustomUser
+from tests.models import Result
+from .models import User
 
-admin.site.register(CustomUser)
+
+class ResultsInline(admin.StackedInline):
+    model = Result
+
+
+class UserAdmin(admin.ModelAdmin):
+    inlines = [ResultsInline]
+
+
+admin.site.register(User, UserAdmin)

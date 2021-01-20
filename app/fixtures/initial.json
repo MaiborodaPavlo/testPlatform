@@ -1,0 +1,932 @@
+[{
+  "model": "sites.site",
+  "pk": 4,
+  "fields": {
+    "domain": "localhost",
+    "name": "localhost"
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$bXbKIppJucdR$mNnHgdlJqNZVLqI/A9i4KyJcA2dMAMu+4ENuImhVzmI=",
+    "last_login": "2021-01-20T11:11:34.033Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-01-20T11:11:23.066Z",
+    "username": null,
+    "email": "test@test.ua",
+    "dob": null,
+    "info": null,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "tests.test",
+  "pk": 1,
+  "fields": {
+    "name": "Тест на эрудицию",
+    "description": "Мы подготовили для Вас тест на проверку вашей эрудиции. Для этого нам пришлось полностью погрузиться в школьную программу, а также базовые знания. Тест состоит из 10 вопросов.  \r\n\r\nЗдесь собраны вопросы из разных тем: география, кулинария, история, спорт, религия и политика. Сложных вопросов нет, но от Вас необходима концентрация.",
+    "n_passed": 0,
+    "created": "2021-01-20T11:44:40.933Z",
+    "owner": 1
+  }
+},
+{
+  "model": "tests.test",
+  "pk": 2,
+  "fields": {
+    "name": "Тест на эрудицию №2",
+    "description": "Мы подготовили для Вас тест на проверку вашей эрудиции. Для этого нам пришлось полностью погрузиться в школьную программу, а также базовые знания. Тест состоит из 10 вопросов. Здесь собраны вопросы из разных тем: география, кулинария, история, спорт, религия и политика. Сложных вопросов нет, но от Вас необходима концентрация.",
+    "n_passed": 0,
+    "created": "2021-01-20T11:55:27.452Z",
+    "owner": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 1,
+  "fields": {
+    "text": "Кто разработал первый работающий печатный станок?",
+    "test": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 2,
+  "fields": {
+    "text": "Какой континент покрыт льдом?",
+    "test": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 3,
+  "fields": {
+    "text": "Бёф бургиньон (говядина по-бургундски) - тушеное мясо, приготовленное из тушеной говядины в_____.",
+    "test": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 4,
+  "fields": {
+    "text": "Кто был первым человеком, который ступил на Луну?",
+    "test": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 5,
+  "fields": {
+    "text": "Кого называли Дуче его последователи?",
+    "test": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 6,
+  "fields": {
+    "text": "Кто написал Старик и море?",
+    "test": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 7,
+  "fields": {
+    "text": "Какой из этих городов находится севернее?",
+    "test": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 8,
+  "fields": {
+    "text": "Джон Ф. Кеннеди был убит в:",
+    "test": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 9,
+  "fields": {
+    "text": "Столица Австрии?",
+    "test": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 10,
+  "fields": {
+    "text": "Каким видом спорта известен Андре Агасси?",
+    "test": 1
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 11,
+  "fields": {
+    "text": "Джакарта является столицей какой страны?",
+    "test": 2
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 12,
+  "fields": {
+    "text": "Столица Эфиопии?",
+    "test": 2
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 13,
+  "fields": {
+    "text": "Какой напиток из перечисленных ниже используются для изготовления Дайкири?",
+    "test": 2
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 14,
+  "fields": {
+    "text": "Какой столяр создал Пиноккио?",
+    "test": 2
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 15,
+  "fields": {
+    "text": "Кто такой Гамлет?",
+    "test": 2
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 16,
+  "fields": {
+    "text": "Кто открыл гравитацию, когда увидел падающее яблоко?",
+    "test": 2
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 17,
+  "fields": {
+    "text": "Где находится Момбаса?",
+    "test": 2
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 18,
+  "fields": {
+    "text": "Сколько красных и белых полосок на американском флаге?",
+    "test": 2
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 19,
+  "fields": {
+    "text": "Древние писания индуизма написаны на:",
+    "test": 2
+  }
+},
+{
+  "model": "tests.question",
+  "pk": 20,
+  "fields": {
+    "text": "Как называется автобиография Адольфа Гитлера?",
+    "test": 2
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 1,
+  "fields": {
+    "text": "Иоганн Гутенберг",
+    "is_right": true,
+    "question": 1
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 2,
+  "fields": {
+    "text": "Галилео Галилей",
+    "is_right": false,
+    "question": 1
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 3,
+  "fields": {
+    "text": "Альберт Эйнштейн",
+    "is_right": false,
+    "question": 1
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 4,
+  "fields": {
+    "text": "Исаак Ньютон",
+    "is_right": false,
+    "question": 1
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 5,
+  "fields": {
+    "text": "Северная Америка",
+    "is_right": false,
+    "question": 2
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 6,
+  "fields": {
+    "text": "Антарктида",
+    "is_right": true,
+    "question": 2
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 7,
+  "fields": {
+    "text": "Азия",
+    "is_right": false,
+    "question": 2
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 8,
+  "fields": {
+    "text": "Африка",
+    "is_right": false,
+    "question": 2
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 9,
+  "fields": {
+    "text": "Бурбоне",
+    "is_right": false,
+    "question": 3
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 10,
+  "fields": {
+    "text": "Ржаном виски",
+    "is_right": false,
+    "question": 3
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 11,
+  "fields": {
+    "text": "Белом вине",
+    "is_right": false,
+    "question": 3
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 12,
+  "fields": {
+    "text": "Красном вине",
+    "is_right": true,
+    "question": 3
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 13,
+  "fields": {
+    "text": "Юрий Гагарин",
+    "is_right": false,
+    "question": 4
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 14,
+  "fields": {
+    "text": "Джон Глен",
+    "is_right": false,
+    "question": 4
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 15,
+  "fields": {
+    "text": "Алан Шепард",
+    "is_right": false,
+    "question": 4
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 16,
+  "fields": {
+    "text": "Нил Армстронг",
+    "is_right": true,
+    "question": 4
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 17,
+  "fields": {
+    "text": "Бенито Муссолини",
+    "is_right": true,
+    "question": 5
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 18,
+  "fields": {
+    "text": "Иосиф Сталин",
+    "is_right": false,
+    "question": 5
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 19,
+  "fields": {
+    "text": "Итало Бальбо",
+    "is_right": false,
+    "question": 5
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 20,
+  "fields": {
+    "text": "Адольф Гитлер",
+    "is_right": false,
+    "question": 5
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 21,
+  "fields": {
+    "text": "Эрнест Хемингуэй",
+    "is_right": true,
+    "question": 6
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 22,
+  "fields": {
+    "text": "Ф. Скотт Фицджеральд",
+    "is_right": false,
+    "question": 6
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 23,
+  "fields": {
+    "text": "Сэлинджер",
+    "is_right": false,
+    "question": 6
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 24,
+  "fields": {
+    "text": "Марк Твен",
+    "is_right": false,
+    "question": 6
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 25,
+  "fields": {
+    "text": "Париж",
+    "is_right": false,
+    "question": 7
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 26,
+  "fields": {
+    "text": "Стокгольм",
+    "is_right": true,
+    "question": 7
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 27,
+  "fields": {
+    "text": "Милан",
+    "is_right": false,
+    "question": 7
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 28,
+  "fields": {
+    "text": "Лондон",
+    "is_right": false,
+    "question": 7
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 29,
+  "fields": {
+    "text": "1953",
+    "is_right": false,
+    "question": 8
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 30,
+  "fields": {
+    "text": "1983",
+    "is_right": false,
+    "question": 8
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 31,
+  "fields": {
+    "text": "1973",
+    "is_right": false,
+    "question": 8
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 32,
+  "fields": {
+    "text": "1963",
+    "is_right": true,
+    "question": 8
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 33,
+  "fields": {
+    "text": "Брюссель",
+    "is_right": false,
+    "question": 9
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 34,
+  "fields": {
+    "text": "Прага",
+    "is_right": false,
+    "question": 9
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 35,
+  "fields": {
+    "text": "Минск",
+    "is_right": false,
+    "question": 9
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 36,
+  "fields": {
+    "text": "Вена",
+    "is_right": true,
+    "question": 9
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 37,
+  "fields": {
+    "text": "Бейсбол",
+    "is_right": false,
+    "question": 10
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 38,
+  "fields": {
+    "text": "Сквош",
+    "is_right": false,
+    "question": 10
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 39,
+  "fields": {
+    "text": "Теннис",
+    "is_right": true,
+    "question": 10
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 40,
+  "fields": {
+    "text": "Крикет",
+    "is_right": false,
+    "question": 10
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 41,
+  "fields": {
+    "text": "Австралия",
+    "is_right": false,
+    "question": 11
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 42,
+  "fields": {
+    "text": "Венесуэла",
+    "is_right": false,
+    "question": 11
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 43,
+  "fields": {
+    "text": "Индонезия",
+    "is_right": true,
+    "question": 11
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 44,
+  "fields": {
+    "text": "Индия",
+    "is_right": false,
+    "question": 11
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 45,
+  "fields": {
+    "text": "Аддис-Абеба",
+    "is_right": true,
+    "question": 12
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 46,
+  "fields": {
+    "text": "Найроби",
+    "is_right": false,
+    "question": 12
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 47,
+  "fields": {
+    "text": "Могадишо",
+    "is_right": false,
+    "question": 12
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 48,
+  "fields": {
+    "text": "Аккра",
+    "is_right": false,
+    "question": 12
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 49,
+  "fields": {
+    "text": "Джин",
+    "is_right": false,
+    "question": 13
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 50,
+  "fields": {
+    "text": "Виски",
+    "is_right": false,
+    "question": 13
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 51,
+  "fields": {
+    "text": "Коньяк",
+    "is_right": false,
+    "question": 13
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 52,
+  "fields": {
+    "text": "Ром",
+    "is_right": true,
+    "question": 13
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 53,
+  "fields": {
+    "text": "Джепетто",
+    "is_right": true,
+    "question": 14
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 54,
+  "fields": {
+    "text": "Чарли Браун",
+    "is_right": false,
+    "question": 14
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 55,
+  "fields": {
+    "text": "Пепе",
+    "is_right": false,
+    "question": 14
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 56,
+  "fields": {
+    "text": "Г-н Магу",
+    "is_right": false,
+    "question": 14
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 57,
+  "fields": {
+    "text": "Король Дании",
+    "is_right": false,
+    "question": 15
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 58,
+  "fields": {
+    "text": "Принц Швеции",
+    "is_right": false,
+    "question": 15
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 59,
+  "fields": {
+    "text": "Король Швеции",
+    "is_right": false,
+    "question": 15
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 60,
+  "fields": {
+    "text": "Принц Дании",
+    "is_right": true,
+    "question": 15
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 61,
+  "fields": {
+    "text": "Мария Кюри",
+    "is_right": false,
+    "question": 16
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 62,
+  "fields": {
+    "text": "Альберт Эйнштейн",
+    "is_right": false,
+    "question": 16
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 63,
+  "fields": {
+    "text": "Чарльз Дарвин",
+    "is_right": false,
+    "question": 16
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 64,
+  "fields": {
+    "text": "Исаак Ньютон",
+    "is_right": true,
+    "question": 16
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 65,
+  "fields": {
+    "text": "Марокко",
+    "is_right": false,
+    "question": 17
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 66,
+  "fields": {
+    "text": "Эфиопия",
+    "is_right": false,
+    "question": 17
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 67,
+  "fields": {
+    "text": "Индия",
+    "is_right": false,
+    "question": 17
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 68,
+  "fields": {
+    "text": "Кения",
+    "is_right": true,
+    "question": 17
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 69,
+  "fields": {
+    "text": "15",
+    "is_right": false,
+    "question": 18
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 70,
+  "fields": {
+    "text": "14",
+    "is_right": false,
+    "question": 18
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 71,
+  "fields": {
+    "text": "17",
+    "is_right": false,
+    "question": 18
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 72,
+  "fields": {
+    "text": "13",
+    "is_right": true,
+    "question": 18
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 73,
+  "fields": {
+    "text": "Арабский язык",
+    "is_right": false,
+    "question": 19
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 74,
+  "fields": {
+    "text": "Персидский",
+    "is_right": false,
+    "question": 19
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 75,
+  "fields": {
+    "text": "Санскрит",
+    "is_right": true,
+    "question": 19
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 76,
+  "fields": {
+    "text": "Иврит",
+    "is_right": false,
+    "question": 19
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 77,
+  "fields": {
+    "text": "Моя борьба",
+    "is_right": true,
+    "question": 20
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 78,
+  "fields": {
+    "text": "Испытание",
+    "is_right": false,
+    "question": 20
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 79,
+  "fields": {
+    "text": "Моя жизнь",
+    "is_right": false,
+    "question": 20
+  }
+},
+{
+  "model": "tests.answer",
+  "pk": 80,
+  "fields": {
+    "text": "Чернильное сердце",
+    "is_right": false,
+    "question": 20
+  }
+}
+]

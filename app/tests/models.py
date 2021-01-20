@@ -8,7 +8,7 @@ class Test(models.Model):
     n_passed = models.PositiveIntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(
-        'accounts.CustomUser',
+        'accounts.User',
         on_delete=models.CASCADE,
         related_name='tests',
         related_query_name='test',
@@ -23,7 +23,7 @@ class Test(models.Model):
 
 class Result(models.Model):
     test = models.ForeignKey(Test, on_delete=models.CASCADE, related_name='results')
-    user = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE)
+    user = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
     right_answers = models.PositiveIntegerField()
 
     class Meta:

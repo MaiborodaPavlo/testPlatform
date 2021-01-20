@@ -8,16 +8,17 @@ from django.forms import formset_factory
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, UpdateView, TemplateView
+from django.views.generic import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 
 from django_filters.views import FilterView
 
 from .filters import TestFilter
 from .forms import TestForm, QuestionAnswersFormset, AnswerProcessForm
-from .models import Test, Result, Question, Answer
+from .models import Test, Result, Answer
 
 
+@method_decorator(login_required, name='dispatch')
 class TestListView(FilterView):
     model = Test
     template_name = 'tests/test_list.html'
@@ -99,18 +100,18 @@ class TestUpdateView(BaseTestFormView, IsTestOwnerMixin, UpdateView):
 
 @login_required
 def test_process(request, pk):
-    answerFormSet = formset_factory(AnswerProcessForm, extra=0)
+    answer_formset = formset_factory(AnswerProcessForm, extra=0)
     test = Test.objects.prefetch_related('questions', 'questions__answers').get(pk=pk)
     
-    choises = []
+    choices = []
     for question in test.questions.all():
         d = defaultdict(list)
         for answer in question.answers.all():
-            d['choises'].append((answer.id, answer.text))
-        choises.append(d)
+            d['choices'].append((answer.id, answer.text))
+        choices.append(d)
 
     if request.method == 'POST':
-        answer_formset = answerFormSet(request.POST, initial=choises)
+        answer_formset = answer_formset(request.POST, initial=choices)
         if answer_formset.is_valid():
             answers_ids = [
                 answer_form.cleaned_data.get('answers') 
@@ -129,7 +130,7 @@ def test_process(request, pk):
                 test.save()
             return redirect('tests:detail', pk=test.pk)
     else:
-        answer_formset = answerFormSet(initial=choises)
+        answer_formset = answer_formset(initial=choices)
 
     combined = zip(test.questions.all(), answer_formset)
     context = {

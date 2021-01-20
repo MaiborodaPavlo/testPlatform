@@ -64,7 +64,6 @@
         </form>
     </div>
 </div>
-
 {% endblock %}
 
 {% block extra_script %}
@@ -84,7 +83,6 @@
         deleteButtonText: 'Delete Question',
         addButtonSelector: '[data-action=add-question]',
     });
-    /* Add new outer form on add button click */
     $('form').on('click', '[data-action=add-question]', function(event) {
         questionFormset.addForm();
     });

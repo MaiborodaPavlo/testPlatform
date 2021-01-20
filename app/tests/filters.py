@@ -40,7 +40,6 @@ class TestFilter(filters.FilterSet):
                     return queryset.filter(~Q(**{lookup: user}))
         return queryset
 
-
     class Meta:
         model = Test
         fields = ['is_passed', 'name']

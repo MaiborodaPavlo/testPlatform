@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    <div class="row my-3">
+        <div class="col-md-6 mx-auto text-center">
+            <h4>Welcome to the test site.</h4>
+            <p>To create and pass tests, go through easy <a href="{% url 'accounts:signup' %}">registration</a></p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import get_user_model, authenticate, login, logout
+from django.contrib.auth import get_user_model, authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import UpdateView
@@ -10,17 +10,17 @@ from .utils import login_excluded
 User = get_user_model()
 
 
-@login_excluded('accounts:dashboard')
+@login_excluded('accounts:profile')
 def login_view(request):
     form = UserLoginForm(request.POST or None)
     if form.is_valid():
         user = authenticate(request, email=form.cleaned_data['email'], password=form.cleaned_data['password'])
         login(request, user)
-        return redirect('accounts:dashboard')
+        return redirect('accounts:profile')
     return render(request, 'accounts/login.html', {'form': form})
 
 
-@login_excluded('accounts:dashboard')
+@login_excluded('accounts:profile')
 def signup_view(request):
     form = UserRegisterForm(request.POST or None)
     if form.is_valid():
@@ -33,8 +33,8 @@ def signup_view(request):
 
 
 @login_required
-def dashboard(request):
-    return render(request, 'accounts/dashboard.html', {})
+def profile(request):
+    return render(request, 'accounts/profile.html', {})
 
 
 class UserUpdate(UpdateView):

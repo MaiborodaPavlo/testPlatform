@@ -68,10 +68,9 @@ class AnswerProcessForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if kwargs.get('initial'):
-            choises = kwargs['initial']['choises']
-            print(choises)
+            choices = kwargs['initial']['choices']
             self.fields['answers'] = forms.ChoiceField(
-                choices=choises,
+                choices=choices,
                 label='',
                 widget=forms.RadioSelect()
             )
