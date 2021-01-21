@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',  # NOTE: uncomment for heroku
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -109,6 +110,11 @@ DATABASES = {
     }
 }
 
+# NOTE: uncomment for heroku
+# import dj_database_url
+# db_from_env = dj_database_url.config()
+# DATABASES['default'].update(db_from_env)
+# DATABASES['default']['CONN_MAX_AGE'] = 500
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -138,6 +144,10 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+# NOTE: uncomment for heroku
+# SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+
+SOCIAL_AUTH_SANITIZE_REDIRECTS = False
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 SOCIAL_AUTH_SLUGIFY_USERNAMES = True
 

@@ -31,3 +31,5 @@ social-auth-app-django==4.0.0
 social-auth-core==4.0.2
 sqlparse==0.3.1
 urllib3==1.26.2
+# dj-database-url==0.5.0 # NOTE: uncomment for heroku
+# whitenoise==5.2.0 # NOTE: uncomment for heroku
